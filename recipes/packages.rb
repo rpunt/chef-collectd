@@ -2,12 +2,18 @@ node["collectd"]["packages"].each do |pkg|
   package pkg
 end
 
-template 'collectd.conf' do
-  path "#{node["collectd"]["dir"]}/collectd.conf"
-  owner 'root'
-  group 'root'
-  mode 0644
-  notifies :restart, 'service[collectd]'
+template "#{node["collectd"]["dir"]}/collectd.conf" do
+  mode "0644"
+  source "collectd.conf.erb"
+  variables(
+    :name         => node["collectd"]["name"],
+    :dir          => node["collectd"]["dir"],
+    :confdir      => node["collectd"]["confdir"],
+    :interval     => node["collectd"]["interval"],
+    :read_threads => node["collectd"]["read_threads"],
+    :plugins      => node["collectd"]["plugins"]
+  )
+  notifies :restart, "service[collectd]"
 end
 
 service "collectd" do
