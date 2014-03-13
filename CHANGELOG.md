@@ -1,3 +1,7 @@
+## v0.4.1:
+
+* Included support for plugin attributes in the `packages` recipe.
+
 ## v0.4.0:
 
 * Updated direct `yum` dependency to `yum-epel`.

@@ -28,8 +28,16 @@ node["collectd"]["plugins"].each_pair do |plugin_key, definition|
   end
 end
 
-conf_d  = "#{node["collectd"]["dir"]}/etc/conf.d"
+conf_d  = node["collectd"]["confdir"]
 keys    = node["collectd"]["plugins"].keys.collect { |k| k.to_s }
+
+directory node["collectd"]["confdir"] do
+  action :create
+  recursive true
+  mode 0755
+  owner 'root'
+  group 'root'
+end
 
 if File.exist?(conf_d)
   Dir.entries(conf_d).each do |entry|
