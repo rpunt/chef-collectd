@@ -12,5 +12,5 @@ Interval <%= @interval %>
 ReadThreads <%= @read_threads %>
 
 <% unless @plugins.empty? %>
-Include "<%= @dir %>/etc/conf.d/*.conf"
+Include "<%= @confdir %>/*.conf"
 <% end %>
