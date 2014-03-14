@@ -1,3 +1,11 @@
+directory node["collectd"]["confdir"] do
+  action :create
+  recursive true
+  mode 0755
+  owner 'root'
+  group 'root'
+end
+
 # treat the graphite plugin specially: set address from search or attributes
 if node["collectd"]["plugins"].key?("write_graphite")
   if node["collectd"]["graphite_ipaddress"].empty?
@@ -30,14 +38,6 @@ end
 
 conf_d  = node["collectd"]["confdir"]
 keys    = node["collectd"]["plugins"].keys.collect { |k| k.to_s }
-
-directory node["collectd"]["confdir"] do
-  action :create
-  recursive true
-  mode 0755
-  owner 'root'
-  group 'root'
-end
 
 if File.exist?(conf_d)
   Dir.entries(conf_d).each do |entry|
