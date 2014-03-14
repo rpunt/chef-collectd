@@ -3,9 +3,9 @@ node["collectd"]["packages"].each do |pkg|
 end
 
 template "#{node["collectd"]["dir"]}/collectd.conf" do
-  mode "0644"
-  owner root
-  group root
+  mode '0644'
+  owner 'root'
+  group 'root'
   source "collectd.conf.erb"
   notifies :restart, "service[collectd]"
 end
