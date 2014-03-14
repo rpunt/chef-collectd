@@ -1,6 +1,6 @@
-default["collectd"]["version"]            = "5.4.0"
+#default["collectd"]["version"]            = "5.4.0"
 default["collectd"]["dir"]                = "/etc/collectd"
-default["collectd"]["confdir"]            = "#{node["collectd"]["dir"]}/plugins.d"
+default["collectd"]["confdir"]            = "/etc/collectd/plugins.d"
 default["collectd"]["plugindir"]          = "/usr/lib/collectd"
 default["collectd"]["typesdbdir"]         = "/usr/share/collectd"
 #default["collectd"]["url"]                = "http://collectd.org/files/collectd-#{node["collectd"]["version"]}.tar.gz"
