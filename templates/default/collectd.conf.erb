@@ -3,13 +3,13 @@
 # Do not edit, changes will be overwritten
 #
 
-Hostname "<%= @name %>"
+Hostname "<%= node[:collectd][:name] %>"
 FQDNLookup true
-BaseDir "<%= @dir %>"
-PluginDir "<%= @dir %>/lib/collectd"
-TypesDB "<%= @dir %>/share/collectd/types.db"
-Interval <%= @interval %>
-ReadThreads <%= @read_threads %>
+BaseDir "<%= node[:collectd][:dir] %>"
+PluginDir "<%= node[:collectd][:plugindir] %>"
+TypesDB "<%= node[:collectd][:typesdbdir] %>/types.db"
+Interval <%= node[:collectd][:interval] %>
+ReadThreads <%= node[:collectd][:read_threads] %>
 
 <% unless @plugins.empty? %>
 Include "<%= @confdir %>/*.conf"
