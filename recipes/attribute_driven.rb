@@ -1,4 +1,4 @@
-directory #{node[:collectd][:confdir]} do
+directory node[:collectd][:confdir] do
   action :create
   recursive true
   mode 0755
